@@ -1,0 +1,7 @@
+library("igraph")
+g <- read.csv("/tmp/taxa_graph.csv")
+n<-graph.data.frame(g, directed=F)
+n <- simplify(n)
+c <- fastgreedy.community(n)
+co <- communities(c)
+plot(subgraph(n,co[[37]]),layout=layout_as_tree)
